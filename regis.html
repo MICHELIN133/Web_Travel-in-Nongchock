@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+	<link rel="icon" type="image/png" href="1122.png">
+</head>
+<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<style>
+	@font-face{
+	font-family: font1;
+	src:url('font/Raleway-Bold.ttf') format("truetype");
+}
+@font-face{
+	font-family: font2;
+	src:url('font/Raleway-light.ttf') format("truetype");
+}
+.container{
+	border: solid 0px;
+	width: 20%;
+	background-color: gray;
+	height: 50px;
+	margin: auto;
+	font-size: 1.45em;
+	border-radius: 5px 5px 0px 0px;
+	padding-top: 20px;
+	text-align: center;
+	margin-top: 0%;
+}
+.f1{
+	font-family: font1;
+	text-align: center;
+	border: none;
+	float: center;
+	color:gold;
+}
+.f2{
+	font-family: font2;
+	text-align: center;
+	margin: auto;
+	float: center;
+	color: white;
+}
+.border{
+	border: solid 0px;
+	width: 20%;
+	background-color: lightgray;
+	border-radius: 0px 0px 5px 5px;
+	margin: auto;
+}
+.usl{
+	font-family: font2;
+	margin-top: 10px;
+	width: 60%;
+	height: 30px;
+	margin-left: 20%;
+	padding-left: 10px;
+	cursor: url('hand cursor.cur'),auto;
+}
+.pwl{
+	font-family: font2;
+	margin-top: 10px;
+	width: 60%;
+	height: 30px;
+	margin-left: 20%;
+	padding-left: 10px;
+	cursor: url('hand cursor.cur'),auto;
+}
+.fname{
+	font-family: font2;
+	margin-top: 10px;
+	width: 60%;
+	height: 30px;
+	margin-left: 20%;
+	padding-left: 10px;
+	cursor: url('hand cursor.cur'),auto;
+}
+.lname{
+	font-family: font2;
+	margin-top: 10px;
+	width: 60%;
+	height: 30px;
+	margin-left: 20%;
+	padding-left: 10px;
+	cursor: url('hand cursor.cur'),auto;
+}
+.lib{
+	margin-top: 10px;
+	width: 65%;
+	height: 30px;
+	background-color: lightblue;
+	border: none;
+	margin-left: 20%;
+	margin-bottom: 1%;
+	font-family: font2;
+	cursor: url('cursor.cur'),auto;
+}
+.rib{
+	margin-top: 10px;
+	width: 65%;
+	height: 30px;
+	background-color: #ffffcc;
+	border: none;
+	margin-left: 20%;
+	font-family: font2;
+	cursor: url('cursor.cur'),auto;
+}
+.usb{
+	margin-top: 15px;
+	width: 65%;
+	height: 30px;
+	background-color: palegreen;
+	border: none;
+	margin-left: 20%;
+	margin-bottom: 20%;
+	font-family: font2;
+	cursor: url('cursor.cur'),auto;
+}
+body{
+	background-color: #303030;
+	font-family: font2;
+	cursor: url('cursor.cur'),auto;
+}
+p{
+	text-align: center;
+	color:indianred;
+}
+.cpr{
+	text-align: center;
+	color:white;
+}
+label{
+	padding-left: 20%;
+}
+.pic{
+	text-align: center;
+}
+
+</style>
+<script >
+$(document).ready(function () {
+                function reset_all() {
+                    var email = $("#email");
+                    var password = $("#password");
+                    var fname = $("#fname");
+                    var lname = $("#lname");
+                    var error_msg = $("#error-msg");
+                    
+
+                    error_msg.slideUp(100);
+                    password.removeClass('input-form-error');
+                    fname.removeClass('input-form-error')
+                    lname.removeClass('input-form-error')
+                    email.removeClass('input-form-error');
+                }
+
+                $("#error-msg").hide();
+
+                $("#login").click(function () {
+                    var email = $("#email");
+                    var password = $("#password");
+                    var error_msg = $("#error-msg");
+                    var fname = $("#fname");
+                    var lname = $("#lname");
+                    var check = 0;
+
+                    reset_all();
+
+                    if (email.val().trim() === "") {
+                        error_msg.html('Please enter your email.');
+                        error_msg.slideDown();
+                        email.focus();
+                        email.addClass('input-form-error');
+                        return;
+                    } else {
+                        email.removeClass('input-form-error');
+
+                    }
+
+                    if (password.val().trim() === "") {
+                        error_msg.html('Please enter your password.');
+                        error_msg.slideDown();
+                        password.focus();
+                        password.addClass('input-form-error');
+                        return;
+                    } else {
+                        password.removeClass('input-form-error');
+
+                    }
+                     if (fname.val().trim() === "") {
+                        error_msg.html('Please enter your firstname.');
+                        error_msg.slideDown();
+                        fname.focus();
+                        fname.addClass('input-form-error');
+                        return;
+                    } else {
+						fname.removeClass('input-form-error');
+
+                    }
+                     if (lname.val().trim() === "") {
+                        error_msg.html('Please enter your lastname.');
+                        error_msg.slideDown();
+                        lname.focus();
+                        lname.addClass('input-form-error');
+                        return;
+                    } else {
+                        lname.removeClass('input-form-error');
+                    }
+                    if(email.val() != "" && password.val() != "" && fname.val() != "" && lname.val() != ""){
+							window.location = "lg.html";
+                    }
+                    $.ajax({
+                        url: 'check_login.php',
+                        dataType: 'json',
+                        method: 'POST',
+                        data: {username: email.val(), password: password.val()},
+                        success: function (data, textStatus, jqXHR) {
+                            if (data.result === 'true') {
+                                error_msg.html(data.msg);
+                                error_msg.slideDown();
+                                setTimeout(function () {
+                                    window.location = 'https://www.google.com';
+                                }, 1000);
+                            } else {
+                                email.select();
+                                email.addClass('input-form-error');
+                                error_msg.html(data.msg);
+                                error_msg.slideDown();
+                            }
+                        }
+                    });
+
+                });
+            });
+function fn1() {
+	alert("Sure,to reset ?");
+}
+function fn2() {
+	alert("Welcome,Please Register");
+}
+</script>
+<body onload="fn2()">
+
+<div class="pic">
+	<img src="12.png">
+</div>
+<div class="container">
+	<a class="f1">REGISTER</a>
+	<a class="f2">HERE</a>
+</div>
+<div class="border">
+		<form class="form" >
+			<label for="u">email</label>
+			<input type="text" placeholder="Enter email" class="usl" id="email">
+
+			<label for="p">password</label>
+			<input type="password" placeholder="Password" class="pwl" id="password">
+
+			<label for="u">firstname</label>
+			<input type="text" placeholder="Enter firstname" class="fname" id="fname">
+
+			<label for="p">lastname</label>
+			<input type="text" placeholder="Enter lastname" class="lname" id="lname">
+			<p id="error-msg"></p>
+			<button type="button" id="login" class="lib" onclick="fn3()" >Register</button>
+			<button type="Reset" id="Reset" class="rib" onclick="fn1()">Reset</button>
+			<button type="button" id="account" class="usb" onclick="location.href='lg.html'">I have account</button>
+		</form>
+</div>
+<p class="cpr">copyright Tamong.co.,Ltd</p>
+</body>
+</html>

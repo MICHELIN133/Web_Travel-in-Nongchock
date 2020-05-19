@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NJ Travel</title>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/png" href="image/1122.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">
+		@font-face{
+			font-family: font1;
+			src:url('font/Raleway-light.ttf') format("truetype");
+		}
+		#header{
+			background-color: #444;
+			height: 6%;
+		}
+		.header-inline{
+			padding-top: 0.5%;
+			font: 24px serif, sans-serif;
+			color: #FFF;
+
+		}
+		div[name = a]{
+			font-family: font1;
+			float: left;
+			border: none;
+			color: white;
+			background-color: #444; 
+		    text-decoration: none;
+		    display: inline-block;
+		    font-size: 14px;
+		    margin-top: 10px;
+		    -webkit-transition-duration: 0.4s;
+		    transition-duration: 0.4s;
+		    cursor: pointer;
+		}
+		.dropbtn {
+			font-family: font1;
+		    background-color: #444;
+		    color: white;
+		    margin-top: 9px;
+		    text-align: center;
+		    font-size: 14px;
+		    -webkit-transition-duration: 0.4s;
+		    transition-duration: 0.4s;
+		    border: none;
+		    cursor: pointer;
+		    padding-left: 20px;
+
+		}
+
+		.dropdown {
+		    position: relative;
+		    display: inline-block;
+		    float: 	left;
+		    margin-left: 4.5%;
+		}
+		.dropdown-content {
+			font-size: 17px;
+			border-radius: 5px 5px 5px 5px;
+    		display: none;
+    		position: absolute;
+    		background-color: #f9f9f9;
+    		min-width: 220px;
+    		z-index: 1;
+		}
+		.dropdown-content [name=a]{
+   			color: black;
+    		padding: 12px 10px;
+    		text-decoration: none;
+    		display: block;
+    		text-align: left;
+    		-webkit-transition-duration: 0.4s;
+		    transition-duration: 0.4s;
+		}
+		.dropdown-content [name=a]:hover {
+			background-color: #f1f1f1;
+			border-radius: 5px 5px 5px 5px;
+		}
+		.dropdown:hover .dropdown-content {
+    		display: block;
+		}
+		.button_Home{
+			cursor: pointer;
+			margin-left: 26%;
+			padding-top: 0.1%;
+		}
+		.button_categories,.button_About,.button_Con,.button_most{
+			cursor: pointer;
+			margin-left: 5%;
+			padding-top: 0.1%;	
+		}
+		.button_Home:hover{
+			color: gray;
+		}
+		.dropbtn:hover,.button_About:hover,.button_Con:hover,.button_most:hover{
+			color: gray;
+			border: none;
+		}
+	
+		html,body{
+			height: 100%;
+			width: 100%;
+			margin: 0;
+			background-color: #444; 
+		}
+		
+		#footer {	
+			font-family: font1;
+			width: 100%;
+			background: #444;
+			color: white;
+			font-size: 16px;
+			text-align: center;
+			height: 6%;
+			pad
+		}
+		.container {
+			position: relative;
+			
+		}
+		.login{
+			font-family: font1;
+			cursor:pointer;
+			position: absolute;
+			height: 45px;
+			width: 13%;
+			background-color: transparent;
+			top: 20%;
+			left: 68%;
+			transform: translate(-50%, -50%);
+			color: lightgray;
+			padding-bottom:3px;
+			font-size:26px;
+			border:1px solid lightgray;
+			-webkit-transition-duration: 0.4s;
+			transition-duration: 0.4s;
+			margin-left: 4%;
+		}
+		.login:hover{
+			background-color: transparent;
+			opacity: 0.2;
+		}
+
+</style>
+</head>
+<body>
+	<div id="header" align="center">	
+		<div class="header-inline">
+			<div name = "a" href="index.html" class="button_Home" onclick="location.href='index.html'">H O M E</div>
+			<div name = "a" href="most.html" class="button_most" onclick="location.href='most.html'">M O S T &ensp; P O P U L A R</div>
+			<div class="dropdown">
+			  <button class="dropbtn">C A T E G O R I E S</button>
+				  <div class="dropdown-content">
+				    <a name="a" href="TheHope.html">T H E &ensp;H O P E</a>
+	      			<a name="a" href="treehouse.html">T R E E &ensp;H O U S E</a>
+	      			<a name="a" href="voodoo.html">V O O D O O &ensp;C O F F E E</a>
+	      			<a name="a" href="arena.html">B A N H K O K &ensp;A R E N A </a>
+	      			<a name="a" class="text_th" href="bike.html">บึงมะขามเทศ</a>
+	      			<a name="a" class="text_th" href="rp.html">เรือนแพฟิชชิ่งปาร์ค</a>
+	      			<a name="a" class="text_th" href="temple.html">วัดประยงค์</a>
+				  </div>
+			</div>
+			<div name = "a"  class="button_About" onclick="location.href='about.html'">A B O U T &ensp;U S</div>
+			<div name = "a"  onclick="location.href='contact.html'" class="button_Con" >C O N T A C T &ensp;U S</div>
+		</div> 
+	</div>
+
+	<div class="container">
+		<img src="image/3.jpg"  style="width:100% ">
+		<button class="login" onclick="location.href='lg.html'">login</button>
+	</div>
+
+	<footer id="footer">
+		<div class="text">&copy;Copyright 2018</div>
+		<img src="image/facebook.png" alt="social">
+		<img src="image/ig.png" alt="social">
+		<img src="image/Twitter.png" alt="social">
+	</footer> 
+<audio autoplay>
+  <source src="login.mp3" type="audio/mpeg">
+</audio>
+</body>	
+</html>

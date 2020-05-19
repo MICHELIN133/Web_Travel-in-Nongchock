@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fishing Park</title>
+		<link rel="icon" type="image/png" href="image/1122.png">
+</head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script></script>
+	<style>
+		@font-face{
+			font-family: font1;
+			src:url('font/Hughs.otf') format("opentype");
+		}
+		@font-face{
+			font-family: font2;
+			src:url('font/Savour&Pinacolada.ttf') format("truetype");
+		}
+		@font-face{
+			font-family: font3;
+			src:url('font/Sansation_Light.ttf') format("truetype");
+		}
+		@font-face{
+			font-family: font4;
+			src:url('font/Raleway-Light.ttf') format("truetype");
+		}
+		
+		@font-face{
+			font-family: font5;
+			src:url('font/Raleway-SemiBold.ttf') format("truetype");
+		}
+
+		@font-face{
+			font-family: font6;
+			src:url('font/Circular.ttf') format("truetype");
+		}
+		@font-face{
+			font-family: font7;
+			src:url('font/EkkamaiStandard-Light.ttf') format("truetype");
+		}
+		html, body{
+			height: 100%;
+		}
+		body{
+			margin: 0px;
+			padding: 0px;
+			background-color: #f2f2f2;
+		}
+		/*Header*/
+		ul{
+			background-color: #444;
+			font-family: font3;
+			list-style-type: none;
+			margin: auto;
+			padding: 0;
+			width: 100%;
+			top: 0;
+			left: 0;
+			z-index: 30;
+			position: fixed;
+			box-shadow: 0px 2px 15px gray;
+		}
+
+		li {
+			float: left;
+		}
+		.menu {
+			float:right;
+		}
+		[name="header"] ,.dropdown{ /*and dropdown*/
+			font-family: font4;
+			position: relative;
+			right: 60px;
+			display: inline-block;
+			color: white;
+			text-align: center;
+			padding: 15px 20px 10px;
+			text-decoration: none;
+			font-size: 0.9em;
+			float:right;
+			-webkit-transition-duration: 0.4s;
+		    transition-duration: 0.4s;
+		}
+		.menu a:hover {
+			color: gray;
+		}
+		.active a{
+			color: gray;
+		}
+		.logo{
+			position:relative;
+		}
+		.logo1 a{
+			font-weight: bold;
+			position: relative;
+			left: 8%;
+			font-size: 30px;
+			color: white;
+			cursor: pointer;
+		}
+		.logo2 a{
+			font-weight: bold;
+			position: relative;
+			right:25%;
+			font-size: 30px;
+			color: gold;
+			cursor: pointer
+		}
+		.logo:hover{
+			color: gray;
+		}
+		/*Dropdown*/
+		.dropdown{
+			color: gray;
+   			display: inline-block;
+   			float: left;
+
+		}
+		.dropdown-content {
+			border-radius: 5px 5px 5px 5px;
+    		display: none;
+    		position: absolute;
+    		background-color: #f9f9f9;
+    		min-width: 200px;
+    		z-index: 1;
+		}
+		.dropdown-content [name=a]{
+   			color: black;
+    		padding: 12px 16px;
+    		text-decoration: none;
+    		display: block;
+    		text-align: left;
+    		-webkit-transition-duration: 0.4s;
+		    transition-duration: 0.4s;
+		}
+		.dropdown-content [name=a]:hover {
+			background-color: #f1f1f1;
+			border-radius: 5px 5px 5px 5px;
+		}
+		.dropdown:hover .dropdown-content {
+    		display: block;
+		}
+		.text_th{
+			font-family: font7;
+			font-size: 16px;
+		}
+		/*End dropdown*/
+		.login{
+			position: relative;
+			font-family: font4;
+			top:11px;
+			right: 8px;
+			background-color: transparent;
+    		border: none;
+    		color: #ffd89c;
+    		text-align: center;
+    		text-decoration: none;
+    		display: inline-block;
+    		font-size: 18px;
+    		-webkit-transition-duration: 0.4s; /* Safari */
+    		transition-duration: 0.4s;
+    		cursor: pointer;
+    		padding-top: 0.2%;
+		}
+		.login:hover{
+			text-decoration:underline;
+		}
+
+		/*------------- Login-------- */ 
+		input[type=text], input[type=password] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+			border-radius: 5px 5px 5px 5px;
+		}
+		.bt-Login {
+			text-align: center;
+			background-color: lightblue ;
+			color: white;
+			padding: 10px 10px;
+			margin-left: 34%;
+			border: none;
+			cursor: pointer;
+			width: 30%;
+			border-radius: 5px 5px 5px 5px;
+		}
+		.bt-Login:hover {
+			opacity: 0.8;
+		}
+		.imgcontainer {
+			text-align: center;
+			margin: 24px 0 12px 0;
+			position: relative;
+		}
+		img.avatar {
+			width: 40%;
+			border-radius: 50%;
+		}
+		.con {
+			padding: 16px;
+		}
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 1; 
+			width: 100%; 
+			height: 100%; 
+			background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+			padding-top: 60px;
+		}
+		.modal-content {
+			background-color: #fefefe;
+			margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+			border: 1px solid #888;
+			width: 25%;
+			border-radius: 5px 5px 5px 5px;
+		}
+		.close {
+			position: absolute;
+			right: 25px;
+			top: 0;
+			color: #000;
+			font-size: 35px;
+			font-weight: bold;
+		}
+
+		.close:hover{
+			color: red;
+			cursor: pointer;
+		}
+		
+		.animate {
+			-webkit-animation: animatezoom 0.6s;
+			animation: animatezoom 0.6s
+		}
+
+		@-webkit-keyframes animatezoom {
+			from {-webkit-transform: scale(0)} 
+			to {-webkit-transform: scale(1)}
+		}
+			
+		@keyframes animatezoom {
+			from {transform: scale(0)} 
+			to {transform: scale(1)}
+		}
+		/*----------End Login-----*/
+		/*----------End Header----*/
+
+		/*---------Page -------*/
+		.content{
+			padding-top: 5%;
+			margin:auto;
+			width: 100%;
+			height: auto;
+		}
+		.con_text{	
+			padding-top: 8%;
+			padding-left: 5%;
+			float: left;
+			width: 40%;
+		}
+		.con_text h1{
+			font-family: font7;
+		}
+		.con_image{
+			position: relative;
+			float: right;
+			width: 50%;
+			height: 400px;
+			right: 4%;
+			margin-top: 3%;
+		    background-image: url('image/rp/0.jpg');
+    		background-position: center;
+   		 	background-repeat: no-repeat;
+    		background-size: cover;
+    		border-radius: 5px 5px 5px 5px;
+		}
+		h1{
+			text-align: center;
+			font-family: font4;
+		}
+		p{
+			text-align: center;
+			font-family: font7;
+			line-height:30px;
+		}
+		.line_b{  /*-----line-----1*/
+			position: relative;
+			clear: both;
+			margin: auto;
+			margin-top: 450px;
+			border-bottom:1px solid #9c9698 ;
+			height: 50px;
+			width: 80%;
+		}
+		.line_b2{	/*-----line-----2*/
+			position: relative;
+			clear: both;
+			margin: auto;
+			border-bottom:1px solid #9c9698 ;
+			height: 50px;
+			width: 80%;
+		}
+		/*-----END Page----*/
+		/*----gallery-----*/
+		.gallery{
+			position: relative;
+			width: 100%;
+			
+		}
+		.slideshow-container {
+  			max-width: 1000px;
+  			height: auto;
+  			position: relative;
+  			margin: auto;
+		}
+		/* Next & previous buttons */
+		.prev, .next {
+		  	cursor: pointer;
+		  	position: absolute;
+		  	top: 50%;
+		  	width: auto;
+		  	padding: 16px;
+		  	margin-top: -22px;
+		  	color: white;
+		  	font-weight: bold;
+		  	font-size: 18px;
+		  	transition: 0.6s ease;
+		  	border-radius: 0 3px 3px 0;
+		}
+		.next {
+  			right: 0;
+  			border-radius: 3px 0 0 3px;
+		}
+		.numbertext {
+		 	color: #f2f2f2;
+		  	font-size: 12px;
+		  	padding: 8px 12px;
+		  	position: absolute;
+		  	top: 0;
+		}
+		.dot {
+		  	cursor: pointer;
+		  	height: 15px;
+		  	width: 15px;
+		  	margin: 0 2px;
+		  	background-color: #bbb;
+		  	border-radius: 50%;
+		  	display: inline-block;
+		  	transition: background-color 0.6s ease;
+		}
+		.prev:hover, .next:hover {
+  			background-color: rgba(0,0,0,0.8);
+		}
+
+		.active, .dot:hover {
+  			background-color: #717171;
+		}
+		/* Fading animation */
+		.fade {
+		  -webkit-animation-name: fade;
+		  -webkit-animation-duration: 1.5s;
+		  animation-name: fade;
+		  animation-duration: 1.5s;
+		}
+
+		@-webkit-keyframes fade {
+		  from {opacity: .4} 
+		  to {opacity: 1}
+		}
+
+		@keyframes fade {
+		  from {opacity: .4} 
+		  to {opacity: 1}
+		}
+
+	 	/*-------Map------*/
+		.mymap{
+			position: relative;
+			width: 100%;
+			height: 500px;
+			margin: auto;
+			padding-top: 2%;
+		}
+		#map{
+			border: 1px solid #dad8d8;
+			position: relative;
+			margin: auto;
+			height: 400px;
+        	width: 80%;
+		}
+		/*-------END Map------*/
+		#footer {	
+			font-family: font4;
+			width: 100%;
+			background: #444;
+			color: white;
+			font-size: 16px;
+			text-align: center;
+			padding-top: 0.2%;
+			
+		}
+		.animate-bottom {
+			position: relative;
+			-webkit-animation-name: animatebottom;
+			-webkit-animation-duration: 1.5s;
+			animation-name: animatebottom;
+			animation-duration: 1.5s
+		}
+
+		@-webkit-keyframes animatebottom {
+		  from {top:100px; opacity:0.2 } 
+		  to {top:0px; opacity:1 }
+		}
+
+		@keyframes animatebottom { 
+		  from{top:100px; opacity:0.2 } 
+		  to{ top:0px; opacity:1 }
+		}	
+	</style>
+</head>
+<body onload="initMap()">
+<!--************Header**********-->
+<div id="myDiv" class="animate-bottom">
+<ul id="ulbar">
+	<div class="logo"><li class="logo1"><a name="header" onclick="location.href='index.html'">NJ</li><li class="logo2">TRAVEL</a></li></div>
+	<div class="menu">
+		<li><a name="header" href="index.html">H O M E</a></li>
+		<li><a name="header" href="most.html">M O S T &ensp; P O P U L A R</a></li>
+		<li class="dropdown">
+			<div name="dropdown" href="#">C A T E G O R I E S</div>
+			<div class="dropdown-content">
+      			<a name="a" href="TheHope.html">T H E &ensp;H O P E</a>
+      			<a name="a" href="treehouse.html">T R E E &ensp;H O U S E</a>
+      			<a name="a" href="voodoo.html">V O O D O O &ensp;C O F F E E</a>
+      			<a name="a" href="arena.html">B A N H K O K &ensp;A R E N A </a>
+      			<a name="a" class="text_th" href="bike.html">บึงมะขามเทศ</a>
+      			<a name="a" class="text_th" href="rp.html">เรือนแพฟิชชิ่งปาร์ค</a>
+      			<a name="a" class="text_th" href="temple.html">วัดประยงค์</a>
+    		</div>
+		</li>
+		<li><a name="header" href="about.html">A B O U T &ensp;U S</a></li>
+		<li><a name="header" href="contact.html">C O N T A C T &ensp;U S</a></li>
+		<li><button class="login" onclick="document.getElementById('id01').style.display='block'">Login</button></li>
+	</div>
+</ul>
+<!--*********Popup login*********-->
+<div id="id01" class="modal">
+	 <form class="modal-content animate" action="most.html">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="image/social.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="con">
+      <label><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+      <button class="bt-Login" type="submit">Login</button>
+      <br><a href="regis.html">Register</a>
+    </div>
+      </form>
+</div>
+
+	<!--***********Content page************-->
+	<div class="content">
+		<!--******text******-->
+		<div class="con_text">
+			<h1>เรือน แพฟิชชิ่ง ปาร์ค</h1>
+			<p >ร้านอาหารที่อยู่กลางทะเลสาบที่แสนจะกว้างใหญ่ และรอบข้างยังเต็มไปด้วย<br>ทิวทัศที่สวยงาม
+				นอกจากนี้ ทางสถานที่ก็ได้เปิดให้เป็นสวนน้ำให้เล่นอีกด้วย
+			</p>
+		</div>
+		<!--**********Image*************-->
+		<div class="con_image"></div>
+		<div class="line_b"></div>
+	</div>
+	<!--***********END Content page************-->
+
+	<!--*********** Gallery*******-->
+	<div class="gallery">
+		<h1>G a l l e r y</h1>
+		<!--********** Image slide*********-->
+	<div class="slideshow-container">
+			<div class="mySlides fade">
+  				<div class="numbertext">1 / 7</div>
+  				<img src="image/rp/1.jpg" style="width:100%">
+			</div>
+			<div class="mySlides fade">
+  				<div class="numbertext">2 / 7</div>
+  				<img src="image/rp/2.jpg" style="width:100%">
+			</div>
+			<div class="mySlides fade">
+  				<div class="numbertext">3 / 7</div>
+  				<img src="image/rp/3.jpg" style="width:100%">
+			</div>
+			<div class="mySlides fade">
+  				<div class="numbertext">4 / 7</div>
+  				<img src="image/rp/4.jpg" style="width:100%">
+			</div>
+			<div class="mySlides fade">
+  				<div class="numbertext">5 / 7</div>
+  				<img src="image/rp/5.jpg" style="width:100%">
+			</div>
+			<div class="mySlides fade">
+  				<div class="numbertext">6 / 7</div>
+  				<img src="image/rp/6.jpg" style="width:100%">
+			</div>
+			<div class="mySlides fade">
+  				<div class="numbertext">7 / 7</div>
+  				<img src="image/rp/7.jpg" style="width:100%">
+			</div>
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		</div>
+		<br>
+		<div style="text-align:center">
+  		<span class="dot" onclick="currentSlide(1)"></span> 
+  		<span class="dot" onclick="currentSlide(2)"></span> 
+  		<span class="dot" onclick="currentSlide(3)"></span> 
+  		<span class="dot" onclick="currentSlide(4)"></span> 
+  		<span class="dot" onclick="currentSlide(5)"></span> 
+  		<span class="dot" onclick="currentSlide(6)"></span> 
+  		<span class="dot" onclick="currentSlide(7)"></span> 
+	</div>
+	<div class="line_b2"></div>
+	</div>
+	<!--***********End Gallery*******-->
+
+
+	<div class="mymap">
+		<h1>M a p</h1>
+		<div id="map"></div>
+	</div>
+	<footer id="footer">
+		<div class="text">&copy;Copyright 2018</div>
+		<img src="image/facebook.png" alt="social">
+		<img src="image/ig.png" alt="social">
+		<img src="image/Twitter.png" alt="social">
+	</footer> 
+</body>
+<script>
+		var slideIndex = 1;
+		showSlides(slideIndex);
+
+		function plusSlides(n) {
+		  showSlides(slideIndex += n);
+		}
+
+		function currentSlide(n) {
+		  showSlides(slideIndex = n);
+		}
+
+		function showSlides(n) {
+		  var i;
+		  var slides = document.getElementsByClassName("mySlides");
+		  var dots = document.getElementsByClassName("dot");
+		  if (n > slides.length) {slideIndex = 1}    
+		  if (n < 1) {slideIndex = slides.length}
+		  for (i = 0; i < slides.length; i++) {
+		      slides[i].style.display = "none";  
+		  }
+		  for (i = 0; i < dots.length; i++) {
+		      dots[i].className = dots[i].className.replace(" active", "");
+		  }
+		  slides[slideIndex-1].style.display = "block";  
+		  dots[slideIndex-1].className += " active";
+		}
+	</script>
+	<script>
+      function initMap() {
+        var uluru = {lat: 13.862989, lng: 100.798542};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script 
+    src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
+    </script>
+</html>
